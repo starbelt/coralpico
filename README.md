@@ -1,4 +1,22 @@
-# Coral Dev Board Micro source code (coralmicro)
+# Coral Pico Source Code
+
+This fork of the Coral Dev Board Micro provides the minimal set of changes to 
+support the modified hardware of the Starbelt Open Hardware Edge TPU payload for
+picosatellites. 
+
+Key changes include:
+
+* Removal of Power Management Integrated Circuit (PMIC) hardware abstraction
+  * The Starbelt EdgeTPU PCB does not feature a PMIC, as the PMIC utilized by
+    the Dev Board Micro was not available for purchase at time of design for the
+    Starbelt PCB.
+* Removal of hardware abstraction for the camera and microphone peripherals.
+  * These devices are not included in the Starbelt Edge TPU Picosatellite PCB.
+* Updated Python Package Requirements
+
+Change Contributors: Jack Rathert
+
+## Coral Dev Board Micro source code (coralmicro)
 
 This repository contains all the code required to build apps for the [Coral Dev
 Board Micro](https://coral.ai/products/dev-board-micro). The Dev Board Micro is
@@ -18,7 +36,7 @@ them to your board with the included flashtool (`scripts/flashtool.py`).
 ![arduino](https://github.com/google-coral/coralmicro/actions/workflows/arduino.yml/badge.svg?event=push)
 
 
-## Documentation
+### Documentation
 
 + [Get Started with the Dev Board Micro](https://coral.ai/docs/dev-board-micro/get-started/)
 
@@ -32,7 +50,7 @@ them to your board with the included flashtool (`scripts/flashtool.py`).
 
 
 
-## Get the code
+### Get the code
 
 1. Clone `coralmicro` and all submodules:
 
@@ -47,7 +65,7 @@ them to your board with the included flashtool (`scripts/flashtool.py`).
     ```
 
 
-## Build the code
+### Build the code
 
 This builds everything in a folder called `build` (or you can specify a
 different path with `-b`, but if you do then you must also specify that path
@@ -57,7 +75,7 @@ everytime you call `flashtool.py`):
 bash build.sh
 ```
 
-## Flash the board
+### Flash the board
 
 This example blinks the board's green LED:
 
@@ -68,7 +86,7 @@ python3 scripts/flashtool.py -e blink_led
 You can see the code at [examples/blink_led/](examples/blink_led/).
 
 
-### Reset the board to Serial Downloader
+#### Reset the board to Serial Downloader
 
 Flashing the Dev Board Micro might fail sometimes and you can usually solve
 it by starting Serial Downloader mode in one of two ways:
@@ -82,7 +100,7 @@ For more details, see the [troubleshooting info on
 coral.ai](https://coral.ai/docs/dev-board-micro/get-started/#serial-downloader).
 
 
-## Update the repo
+### Update the repo
 
 Use the following commands to keep all coralmicro submodules in sync (rebasing your current branch):
 

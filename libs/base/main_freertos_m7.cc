@@ -32,7 +32,7 @@
 #include "libs/camera/camera.h"
 #include "libs/cdc_eem/cdc_eem.h"
 #include "libs/nxp/rt1176-sdk/board_hardware.h"
-#include "libs/pmic/pmic.h"
+//#include "libs/pmic/pmic.h"
 #include "libs/tpu/edgetpu_dfu_task.h"
 #include "libs/tpu/edgetpu_task.h"
 #include "libs/usb/usb_device_task.h"
@@ -72,7 +72,7 @@ extern "C" int main(int argc, char** argv) {
 }
 
 extern "C" int real_main(int argc, char** argv, bool init_console_tx,
-                         bool init_console_rx) {
+                        bool init_console_rx) {
   BOARD_InitHardware(true);
   SEMA4_Init(SEMA4);
   coralmicro::ResetStoreStats();
@@ -99,8 +99,8 @@ extern "C" int real_main(int argc, char** argv, bool init_console_tx,
   LPI2C_RTOS_Init(&g_i2c5_handle, reinterpret_cast<LPI2C_Type*>(LPI2C5_BASE),
                   &config, CLOCK_GetFreq(kCLOCK_OscRc48MDiv2));
 
-  coralmicro::PmicTask::GetSingleton()->Init(&g_i2c5_handle);
-  coralmicro::CameraTask::GetSingleton()->Init(&g_i2c5_handle);
+  //coralmicro::PmicTask::GetSingleton()->Init(&g_i2c5_handle);
+  //coralmicro::CameraTask::GetSingleton()->Init(&g_i2c5_handle);
 
   CHECK(xTaskCreate(app_main, "app_main", configMINIMAL_STACK_SIZE * 30,
                     nullptr, coralmicro::kAppTaskPriority, nullptr) == pdPASS);
